@@ -204,7 +204,7 @@ export default function Home() {
                <div className="space-y-4">
                  {["Reality Capture", "3D Scanning", "Photogrammetry"].map((tech) => (
                    <div key={tech} className="flex items-center p-4 border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md transition-all cursor-pointer">
-                      <div className="w-10 h-10 bg-brand-dark text-white flex items-center justify-center font-bold mr-4">></div>
+                      <div className="w-10 h-10 bg-brand-dark text-white flex items-center justify-center font-bold mr-4">&gt;</div>
                       <span className="font-bold text-brand-dark">{tech}</span>
                    </div>
                  ))}
