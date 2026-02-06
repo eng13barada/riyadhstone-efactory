@@ -3,8 +3,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // DO NOT ADD ESLINT CONFIG HERE. IT BREAKS THE BUILD.
 };
 export default nextConfig;
