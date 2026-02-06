@@ -11,7 +11,7 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   {
-    ignores: ["**/*"], // Ignore all files to ensure Vercel build passes
+    ignores: ["**/*"],
   },
   ...compat.config({
     extends: ["next/core-web-vitals", "next/typescript"],
