@@ -1,192 +1,195 @@
 "use client";
 
-import React, { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
 
-// Navigation Data
+// Navigation Data Structure
 const navItems = [
   {
-    label: "Main Page",
-    href: "/",
-  },
-  {
-    label: "ABOUT",
+    label: "About",
     href: "/about",
-    submenu: [
-      { label: "Who is RiyadhStone", href: "/about/who-we-are" },
-      { label: "Vision & Mission", href: "/about/vision" },
-      { label: "Factory Capabilities", href: "/about/factory" },
+    dropdown: [
+      { label: "Brand Story", href: "/about/story" },
+      { label: "Vision", href: "/about/vision" },
+      { label: "Factory", href: "/about/factory" },
+      { label: "Leadership", href: "/about/leadership" },
     ],
   },
   {
-    label: "ENGINEERING PRODUCTS",
+    label: "Engineering",
+    href: "/engineering",
+    dropdown: [
+      { label: "Design Assist", href: "/engineering/design-assist" },
+      { label: "BIM", href: "/engineering/bim" },
+      { label: "Shop Drawings", href: "/engineering/shop-drawings" },
+    ],
+  },
+  {
+    label: "Products",
     href: "/products",
-    submenu: [
-      { label: "RiyadEx™ (Exterior Cladding)", href: "/products/riyadex" },
-      { label: "RiyadFloor™ (Flooring Systems)", href: "/products/riyadfloor" },
-      { label: "RiyadCiv™ (Civil Works)", href: "/products/riyadciv" },
-      { label: "RiyadWet™ (Pools & Water Features)", href: "/products/riyadwet" },
-      { label: "RiyadUrb™ (Urban Furniture)", href: "/products/riyadurb" },
-      { label: "RiyadStep™ (Staircases)", href: "/products/riyadstep" },
-      { label: "RiyadRaw™ (Slabs & Blocks)", href: "/products/riyadraw" },
+    dropdown: [
+      { label: "RiyadEx™", href: "/products/riyadex" },
+      { label: "RiyadFloor™", href: "/products/riyadfloor" },
+      { label: "RiyadCiv™", href: "/products/riyadciv" },
+      { label: "RiyadWet™", href: "/products/riyadwet" },
+      { label: "RiyadUrb™", href: "/products/riyadurb" },
+      { label: "RiyadStep™", href: "/products/riyadstep" },
+      { label: "RiyadRaw™", href: "/products/riyadraw" },
     ],
   },
   {
-    label: "ART & TECHNOLOGY",
+    label: "Art & Technology",
     href: "/technology",
-    submenu: [
-      { label: "Fly with RiyadhStone (Drone)", href: "/technology/drone" },
-      { label: "Reality Capture (3D/Scanning)", href: "/technology/reality-capture" },
-      { label: "Urban Design Study", href: "/technology/urban-design" },
+    dropdown: [
+      { label: "Fly", href: "/technology/fly" },
+      { label: "Reality Capture", href: "/technology/reality-capture" },
+      { label: "Urban Study", href: "/technology/urban-study" },
     ],
   },
   {
-    label: "QUALITY",
+    label: "Quality & HSE",
     href: "/quality",
-    submenu: [
-      { label: "QMS & Standards", href: "/quality/qms" },
-      { label: "Testing & Inspection", href: "/quality/testing" },
-      { label: "Traceability", href: "/quality/traceability" },
+    dropdown: [
+      { label: "Quality", href: "/quality" },
+      { label: "HSE", href: "/hse" },
+      { label: "Sustainability", href: "/sustainability" },
     ],
   },
   {
-    label: "HSE & SUSTAINABILITY",
-    href: "/hse",
-  },
-  {
-    label: "LIBRARY",
+    label: "Library",
     href: "/library",
-    submenu: [
-      { label: "Downloads", href: "/library/downloads" },
-      { label: "Technical Data Sheets", href: "/library/data-sheets" },
-    ],
   },
   {
-    label: "CONTACT US",
+    label: "Contact",
     href: "/contact",
   },
 ];
 
-export function Navbar() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F9F9F7]/90 text-[var(--color-brand-dark)] backdrop-blur-md border-b border-black/5">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl font-bold tracking-tighter uppercase relative z-50 text-[var(--color-brand-dark)]"
-        >
-          Riyadh<span className="text-[var(--color-brand-gold)]">Stone</span>®
-        </Link>
+    <nav className="sticky top-0 z-50 w-full bg-brand-dark border-b border-gray-800 text-white shadow-xl font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/">
+               {/* Using a text fallback if image fails, but configured for Image as requested */}
+               <div className="relative h-[45px] w-auto aspect-[3/1]">
+                 {/* Ideally replace with <Image src="/logo.png" ... /> once generic placeholder logic is confirmed or file exists. 
+                     Using raw img for simplicity in prototype if Image config issues arise, but standard Next Image is best.
+                 */}
+                  <span className="text-2xl font-bold tracking-widest text-white">RIYADH<span className="text-brand-bronze">STONE</span>®</span>
+               </div>
+            </Link>
+          </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex h-full items-center gap-6 xl:gap-8">
-          {navItems.map((item, index) => (
-            <div
-              key={item.label}
-              className="relative h-full flex items-center"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <Link
-                href={item.href}
-                className="text-xs xl:text-sm font-bold tracking-wide hover:text-[var(--color-brand-gold)] transition-colors flex items-center gap-1 group uppercase"
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center space-x-6">
+            {navItems.map((item) => (
+              <div 
+                key={item.label} 
+                className="relative group h-full flex items-center"
+                onMouseEnter={() => item.dropdown && setActiveDropdown(item.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {item.label}
-                {item.submenu && (
-                  <ChevronDown
-                    className={`w-3 h-3 transition-transform duration-300 ${hoveredIndex === index ? "rotate-180" : ""}`}
-                  />
-                )}
-              </Link>
+                <Link 
+                  href={item.href}
+                  className="px-2 py-2 text-sm uppercase tracking-wider font-semibold hover:text-brand-bronze transition-colors duration-200"
+                >
+                  {item.label}
+                </Link>
 
-              {/* Mega Menu / Dropdown */}
-              <AnimatePresence>
-                {item.submenu && hoveredIndex === index && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 pt-0 min-w-[200px]"
-                  >
-                    <div className="bg-white border border-black/5 p-4 shadow-xl rounded-sm">
-                      <div className="flex flex-col gap-2">
-                        {item.submenu.map((subItem) => (
-                          <Link
-                            key={subItem.label}
-                            href={subItem.href}
-                            className="text-sm font-medium text-zinc-500 hover:text-[var(--color-brand-dark)] hover:bg-zinc-50 p-2 rounded block transition-all"
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
+                {/* Dropdown Menu */}
+                {item.dropdown && (
+                  <div className="absolute left-0 top-full w-48 bg-brand-dark border border-gray-800 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left">
+                    <div className="py-2">
+                      {item.dropdown.map((subItem) => (
+                        <Link 
+                          key={subItem.label} 
+                          href={subItem.href}
+                          className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-brand-bronze"
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden p-2 text-[var(--color-brand-dark)] relative z-50"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "spring", stiffness: 100, damping: 20 }}
-              className="fixed inset-0 bg-[#F9F9F7] z-40 flex flex-col pt-24 px-8 overflow-y-auto lg:hidden"
-            >
-              <div className="flex flex-col gap-6">
-                {navItems.map((item) => (
-                  <div
-                    key={item.label}
-                    className="border-b border-black/10 pb-4"
-                  >
-                    <Link
-                      href={item.href}
-                      className="text-lg font-bold tracking-wide text-[var(--color-brand-dark)] hover:text-[var(--color-brand-gold)] block mb-4 uppercase"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                    {item.submenu && (
-                      <div className="flex flex-col gap-3 pl-4 border-l border-black/10">
-                        {item.submenu.map((subItem) => (
-                          <Link
-                            key={subItem.label}
-                            href={subItem.href}
-                            className="text-sm text-zinc-500 hover:text-[var(--color-brand-dark)] transition-colors"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
                   </div>
-                ))}
+                )}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="hidden lg:flex items-center">
+            <Link 
+              href="/quote" 
+              className="bg-brand-bronze hover:bg-yellow-600 text-brand-dark font-bold py-2 px-6 rounded-sm uppercase tracking-widest text-xs transition-all"
+            >
+              Get a Quote
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+            >
+              <span className="sr-only">Open main menu</span>
+              {!mobileMenuOpen ? (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              ) : (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-brand-dark border-t border-gray-800">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {navItems.map((item) => (
+              <div key={item.label}>
+                <Link
+                  href={item.href}
+                  className="block px-3 py-2 text-base font-medium text-white hover:text-brand-bronze hover:bg-gray-900"
+                >
+                  {item.label}
+                </Link>
+                {item.dropdown && (
+                  <div className="pl-6 space-y-1">
+                    {item.dropdown.map((subItem) => (
+                      <Link
+                        key={subItem.label}
+                        href={subItem.href}
+                        className="block px-3 py-2 text-sm font-medium text-gray-400 hover:text-white"
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+             <Link 
+              href="/quote" 
+              className="block w-full text-center mt-4 bg-brand-bronze text-brand-dark font-bold py-3 uppercase tracking-widest"
+            >
+              Get a Quote
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

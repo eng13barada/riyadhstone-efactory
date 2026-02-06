@@ -10,12 +10,16 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        "brand-gold": "#CCA876",
-        "stone-light": "#F9F9F7",
-        "brand-dark": "#4A4A4A",
+        "brand-dark": "#1a1a1a",
+        "brand-bronze": "#c5a059",
+        "brand-paper": "#f4f1ea",
+        "brand-text": "#333333",
       },
       fontFamily: {
-        sans: ["Calibri", "sans-serif"],
+        sans: ["Calibri", "Arial", "sans-serif"],
+      },
+      backgroundImage: {
+        "paper-texture": "url('/noise.png')", // Placeholder for noise, or we can use CSS radial gradient
       },
     },
   },

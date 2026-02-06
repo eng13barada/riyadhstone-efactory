@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Navbar } from "@/components/layout/Navbar";
 import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "RiyadhStone® | Engineered Stone",
-  description: "Advanced Engineered Stone & Factory GenAI Core",
+  title: "RiyadhStone® | Engineered Stone Solutions",
+  description: "An engineering-led stone solutions brand delivering trusted results for strategic projects.",
 };
 
 export default function RootLayout({
@@ -13,14 +14,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className="bg-[#F9F9F7] font-sans antialiased text-[var(--color-brand-dark)]"
+        className="font-sans antialiased bg-brand-paper text-brand-text min-h-screen flex flex-col"
       >
         <Navbar />
-        <main className="pt-20">
+        {/* Main content wrapper */}
+        <main className="flex-grow">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
