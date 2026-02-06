@@ -10,7 +10,6 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  // THE FIX: Globally ignore all files to pass Vercel build
   {
     ignores: ["**/*"],
   },
