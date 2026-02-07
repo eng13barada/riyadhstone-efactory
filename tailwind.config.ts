@@ -10,17 +10,18 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: "#4F3F31",     // Najdi Mud (Deep Warm Brown)
-          beige: "#F5DFB3",    // Soft Beige
-          cream: "#FFFDE8",    // Off-White Lime Plaster
+          dark: "#2B2825",     // Salmani Warm Charcoal (Primary Background)
           gold: "#D4B56C",     // Riyadh Limestone Gold (Accents)
-          palm: "#6F8672",     // Dried Palm Green
-          charcoal: "#393939", // Primary Text
+          cream: "#F5F5F0",    // Off-White (Text)
+          beige: "#E8E6E3",    // Muted Stone (Secondary Text)
+          charcoal: "#1F1D1B", // Deepest Dark (Footer/Nav)
+          accent: "#D4B56C",   // Gold Alias
         },
       },
-      backgroundImage: {
-        'najdi-pattern': "url('/patterns/najdi-geometry.png')",
+      fontFamily: {
+        sans: ['var(--font-manrope)', 'sans-serif'],
       },
+      backgroundImage: {},
     },
   },
   plugins: [],
