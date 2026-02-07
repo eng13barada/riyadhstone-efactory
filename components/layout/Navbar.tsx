@@ -2,73 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image";
-
-// Navigation Data Structure
-const navItems = [
-  {
-    label: "About",
-    href: "/about",
-    dropdown: [
-      { label: "Brand Story", href: "/about/story" },
-      { label: "Vision", href: "/about/vision" },
-      { label: "Factory", href: "/about/factory" },
-      { label: "Leadership", href: "/about/leadership" },
-    ],
-  },
-  {
-    label: "Engineering",
-    href: "/engineering",
-    dropdown: [
-      { label: "Design Assist", href: "/engineering/design-assist" },
-      { label: "BIM", href: "/engineering/bim" },
-      { label: "Shop Drawings", href: "/engineering/shop-drawings" },
-    ],
-  },
-  {
-    label: "Products",
-    href: "/products",
-    dropdown: [
-      { label: "RiyadEx™", href: "/products/riyadex" },
-      { label: "RiyadFloor™", href: "/products/riyadfloor" },
-      { label: "RiyadCiv™", href: "/products/riyadciv" },
-      { label: "RiyadWet™", href: "/products/riyadwet" },
-      { label: "RiyadUrb™", href: "/products/riyadurb" },
-      { label: "RiyadStep™", href: "/products/riyadstep" },
-      { label: "RiyadRaw™", href: "/products/riyadraw" },
-    ],
-  },
-  {
-    label: "Art & Technology",
-    href: "/technology",
-    dropdown: [
-      { label: "Fly", href: "/technology/fly" },
-      { label: "Reality Capture", href: "/technology/reality-capture" },
-      { label: "Urban Study", href: "/technology/urban-study" },
-    ],
-  },
-  {
-    label: "Quality & HSE",
-    href: "/quality",
-    dropdown: [
-      { label: "Quality", href: "/quality" },
-      { label: "HSE", href: "/hse" },
-      { label: "Sustainability", href: "/sustainability" },
-    ],
-  },
-  {
-    label: "Library",
-    href: "/library",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
-];
+import { navigationData } from "@/data/navigation";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  const { mainLinks } = navigationData;
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-brand-dark border-b border-gray-800 text-white shadow-xl font-sans">
@@ -79,9 +19,6 @@ export default function Navbar() {
             <Link href="/">
                {/* Using a text fallback if image fails, but configured for Image as requested */}
                <div className="relative h-[45px] w-auto aspect-[3/1]">
-                 {/* Ideally replace with <Image src="/logo.png" ... /> once generic placeholder logic is confirmed or file exists. 
-                     Using raw img for simplicity in prototype if Image config issues arise, but standard Next Image is best.
-                 */}
                   <span className="text-2xl font-bold tracking-widest text-white">RIYADH<span className="text-brand-bronze">STONE</span>®</span>
                </div>
             </Link>
@@ -89,7 +26,7 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-6">
-            {navItems.map((item) => (
+            {mainLinks.map((item) => (
               <div 
                 key={item.label} 
                 className="relative group h-full flex items-center"
@@ -158,7 +95,7 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-brand-dark border-t border-gray-800">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
+            {mainLinks.map((item) => (
               <div key={item.label}>
                 <Link
                   href={item.href}

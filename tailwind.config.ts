@@ -14,12 +14,18 @@ const config: Config = {
         "brand-bronze": "#c5a059",
         "brand-paper": "#f4f1ea",
         "brand-text": "#333333",
+        "stone-900": "#1c1917",
+        "stone-800": "#292524",
+        "stone-700": "#44403c",
+        "stone-600": "#57534e",
+        "stone-50": "#fafaf9",
       },
       fontFamily: {
-        sans: ["Calibri", "Arial", "sans-serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
       },
       backgroundImage: {
-        "paper-texture": "url('/noise.png')", // Placeholder for noise, or we can use CSS radial gradient
+        "paper-texture": "url('/noise.png')",
+        "grid-pattern": "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
       },
     },
   },
