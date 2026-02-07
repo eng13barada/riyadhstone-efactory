@@ -10,15 +10,16 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        "brand-dark": "#1a1a1a",
-        "brand-bronze": "#c5a059",
-        "brand-paper": "#f4f1ea",
-        "brand-text": "#333333",
-        "stone-900": "#1c1917",
-        "stone-800": "#292524",
-        "stone-700": "#44403c",
-        "stone-600": "#57534e",
-        "stone-50": "#fafaf9",
+        // Salmani Dark Theme Palette
+        brand: {
+          base: '#2B2825',    // Warm Charcoal (Background)
+          mud: '#4F3F31',     // Najdi Mud (Secondary BG)
+          sand: '#F5DFB3',    // Soft Sand (Cards/Light Text)
+          cream: '#FFFDE8',   // Lime Plaster (Primary Text)
+          gold: '#D4B56C',    // Riyadh Limestone (Accent/Buttons)
+          green: '#6F8672',   // Dried Palm (Subtle details)
+        },
+        // Keep existing defaults if needed, but prioritize brand colors
       },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],

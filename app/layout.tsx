@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className="font-sans antialiased bg-brand-paper text-brand-text min-h-screen flex flex-col"
+        className="font-sans antialiased bg-brand-base text-brand-cream min-h-screen flex flex-col"
       >
         <Navbar />
         {/* Main content wrapper */}
