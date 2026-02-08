@@ -1,179 +1,481 @@
 import Image from "next/image";
 import Link from "next/link";
+import { 
+  ArrowRight, 
+  CheckCircle2, 
+  ChevronDown, 
+  Download, 
+  ExternalLink, 
+  Menu, 
+  Phone, 
+  ShieldCheck, 
+  Zap, 
+  Box, 
+  Layers, 
+  Cpu, 
+  Factory, 
+  HardHat, 
+  FileText, 
+  Activity, 
+  Users 
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <>
-      {/* Header */}
-      <header className="bg-[var(--primary-brown)] text-[var(--creamy-white)] sticky top-0 z-[100] border-b border-white/5">
-        <div className="max-w-[1800px] mx-auto px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 relative overflow-hidden">
-              <img alt="R Logo" className="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuNOT1EOmsLNQNOms0ldDMYzroP9o-KNd7G2B5XdOK6UAl38RBrfOVq5O_Xo0fwCisFct_HNkrLeMWwv3r7NV0y2XKlWHza2jFb8dpnRxAgu8jNremYWfIwN5a74mEy1qIj--b9hagZvx9020r7nG5aewDUMmfmHR5prr4l40Qe7OU4Be4tdLP5YTNOL4TydzFgJQGTPjKnFyx_5ij4oiOm391guoh9MQzVFOARfhDg6cZC773Xr0lOEQW3q_LGD67Cgcga3cdIIWt"/>
-            </div>
-            <div>
-              <span className="text-xl tracking-widest uppercase flex items-baseline">
-                <span className="font-thin">Riyadh</span>
-                <span className="font-bold">Stone</span>
-                <span className="text-[10px] self-start leading-none ml-0.5">®</span>
-              </span>
-              <p className="text-[8px] tracking-[0.4em] uppercase opacity-40 -mt-1">Client Dashboard</p>
-            </div>
-          </div>
-          
-          <nav className="hidden 2xl:flex items-center">
-            <div className="relative group">
-              <a className="px-5 py-8 text-[10px] font-bold uppercase tracking-widest text-[var(--gold)]" href="#">Active Projects</a>
-            </div>
-            <div className="relative group">
-              <a className="px-5 py-8 text-[10px] font-bold uppercase tracking-widest hover:text-[var(--gold)] transition-colors" href="#">Technical Vault</a>
-            </div>
-            <div className="relative group">
-              <a className="px-5 py-8 text-[10px] font-bold uppercase tracking-widest hover:text-[var(--gold)] transition-colors" href="#">Support</a>
-            </div>
-          </nav>
-          
-          <div className="flex items-center gap-6">
-            <div className="text-right hidden sm:block">
-              <p className="text-[10px] font-black uppercase tracking-widest leading-none">Al-Majd Tower</p>
-              <p className="text-[8px] opacity-40 uppercase tracking-widest">Project ID: RS-2024-089</p>
-            </div>
-            <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
-              <span className="material-symbols-outlined text-sm">person</span>
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="bg-brand-charcoal min-h-screen text-brand-cream selection:bg-brand-gold selection:text-brand-charcoal overflow-x-hidden">
       
-      {/* Main Content */}
-      <main className="flex-grow p-8 lg:p-12 max-w-[1800px] mx-auto w-full min-h-screen flex flex-col bg-warm-charcoal bg-noise text-[var(--creamy-white)]">
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="h-[1px] w-8 bg-metallic-gold"></span>
-              <span className="text-metallic-gold text-[10px] font-black uppercase tracking-[0.4em]">Live Status Update</span>
-            </div>
-            <h1 className="text-4xl font-black uppercase tracking-tight text-[var(--creamy-white)]">Project Progress Tracker</h1>
+      {/* 1. HERO SECTION */}
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/assets/images/hero_tower.jpg"
+            alt="Riyadh Skyscraper Facade"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-brand-charcoal"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <div className="inline-block mb-4 px-3 py-1 border border-brand-gold/30 rounded-full bg-black/40 backdrop-blur-sm">
+            <span className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase">Est. 2004 • Riyadh, KSA</span>
           </div>
-          <div className="flex gap-4">
-            <button className="bg-[var(--primary-brown)] text-white px-6 py-3 text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-[var(--deep-brown)] transition-all border border-[var(--gold)]/20">
-              <span className="material-symbols-outlined text-sm text-metallic-gold">download</span> Engineering Pack
-            </button>
-            <button className="border border-[var(--primary-brown)]/20 px-6 py-3 text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-white/5 transition-all">
-              <span className="material-symbols-outlined text-sm text-metallic-gold">mail</span> Contact PM
-            </button>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none mb-6">
+            Engineered Stone <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-beige">Trusted Results</span>
+          </h1>
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/80 font-light mb-10 leading-relaxed">
+            The Digital Flagship for advanced stone engineering. We transform raw geology into architectural precision for the Kingdom's most strategic projects.
+          </p>
+          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <Link href="#contact" className="group bg-brand-gold text-brand-charcoal px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition-colors flex items-center gap-2">
+              Start Your Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link href="#portfolio" className="group border border-white/20 hover:bg-white/5 px-8 py-4 font-bold uppercase tracking-widest transition-colors flex items-center gap-2">
+              View Portfolio
+            </Link>
           </div>
         </div>
-        
-        <div className="glass-panel p-12 mb-12 relative overflow-hidden">
-          <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
-          <div className="flex justify-between items-center mb-16 relative z-10">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Engineering Pipeline</h3>
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 bg-metallic-gold text-[var(--deep-brown)] shadow-lg shadow-[#D4B56C]/20">Current Phase: Fabrication</span>
+
+        <div className="absolute bottom-10 left-0 w-full flex justify-center animate-bounce">
+          <ChevronDown className="w-8 h-8 text-brand-gold/50" />
+        </div>
+      </section>
+
+      {/* 2. TRUST EQUATION */}
+      <section className="py-24 bg-brand-charcoal relative">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 opacity-80">
+            <div className="text-center">
+              <span className="block text-6xl font-black text-brand-gold mb-2">15+</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-white/60">Years Experience</span>
+            </div>
+            <div className="h-12 w-[1px] bg-white/10 hidden md:block"></div>
+            <div className="text-center">
+              <span className="block text-6xl font-black text-brand-gold mb-2">2M+</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-white/60">SQM Installed</span>
+            </div>
+            <div className="h-12 w-[1px] bg-white/10 hidden md:block"></div>
+            <div className="text-center">
+              <span className="block text-6xl font-black text-brand-gold mb-2">100%</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-white/60">Delivery Rate</span>
+            </div>
           </div>
           
-          <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-4 z-10">
-            {/* Step 1 */}
-            <div className="relative z-10 flex flex-col items-center text-center md:w-1/4">
-              <div className="w-14 h-14 rounded-full flex items-center justify-center pipeline-node completed mb-4 shadow-xl shadow-[#D4B56C]/10 bg-metallic-gold text-[var(--deep-brown)]">
-                <span className="material-symbols-outlined">task_alt</span>
-              </div>
-              <h4 className="text-[10px] font-black uppercase tracking-widest mb-2 text-[var(--gold)]">Technical Submittal Approved</h4>
-              <p className="text-[9px] opacity-40 uppercase tracking-tighter">Completed: Aug 15</p>
-            </div>
-            
-            {/* Connector */}
-            <div className="hidden md:block absolute top-[28px] left-[12.5%] w-[25%] h-[2px] pipeline-line completed z-0 bg-metallic-gold"></div>
-            
-             {/* Step 2 */}
-            <div className="relative z-10 flex flex-col items-center text-center md:w-1/4">
-               <div className="w-14 h-14 rounded-full flex items-center justify-center pipeline-node completed mb-4 shadow-xl shadow-[#D4B56C]/10 bg-metallic-gold text-[var(--deep-brown)]">
-                 <span className="material-symbols-outlined">view_in_ar</span>
-               </div>
-               <h4 className="text-[10px] font-black uppercase tracking-widest mb-2 text-[var(--gold)]">3D BIM Coordination</h4>
-               <p className="text-[9px] opacity-40 uppercase tracking-tighter">Completed: Sept 01</p>
-            </div>
-
-            {/* Connector */}
-            <div className="hidden md:block absolute top-[28px] left-[37.5%] w-[25%] h-[2px] pipeline-line completed z-0 bg-metallic-gold"></div>
-
-             {/* Step 3 (Active) */}
-            <div className="relative z-10 flex flex-col items-center text-center md:w-1/4">
-               <div className="w-14 h-14 rounded-full flex items-center justify-center pipeline-node active bg-[var(--deep-brown)] border border-[var(--gold)] mb-4 shadow-xl shadow-[#D4B56C]/30 animate-pulse">
-                 <span className="material-symbols-outlined text-metallic-gold">precision_manufacturing</span>
-               </div>
-               <h4 className="text-[10px] font-black uppercase tracking-widest mb-2 text-metallic-gold">CNC Fabrication</h4>
-               <p className="text-[9px] opacity-60 uppercase tracking-tighter text-[var(--gold)]">In Progress: 78%</p>
-            </div>
-            
-            {/* Connector (Pending) */}
-            <div className="hidden md:block absolute top-[28px] left-[62.5%] w-[25%] h-[2px] bg-white/10 z-0"></div>
-
-             {/* Step 4 (Pending) */}
-            <div className="relative z-10 flex flex-col items-center text-center md:w-1/4">
-               <div className="w-14 h-14 rounded-full flex items-center justify-center border border-white/10 bg-white/5 text-white/20 mb-4">
-                 <span className="material-symbols-outlined">local_shipping</span>
-               </div>
-               <h4 className="text-[10px] font-black uppercase tracking-widest mb-2 opacity-40">Site Delivery</h4>
-               <p className="text-[9px] opacity-20 uppercase tracking-tighter">Expected: Oct 10</p>
-            </div>
-            
+          <div className="mt-16 text-center max-w-4xl mx-auto border sm:border-t-0 p-8 border-white/5 bg-white/[0.02]">
+             <h3 className="text-2xl font-light italic text-white/90">
+               "We don't just supply stone. We engineer confidence."
+             </h3>
           </div>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="glass-panel p-8 relative overflow-hidden">
-               <div className="absolute inset-0 bg-noise opacity-5 pointer-events-none"></div>
-               <span className="material-symbols-outlined text-4xl text-metallic-gold mb-6 relative z-10">description</span>
-               <h3 className="text-xl font-black uppercase mb-2 relative z-10">Document Control</h3>
-               <p className="text-xs opacity-60 mb-6 relative z-10">Latest approved shop drawings and material submittals.</p>
-               <ul className="space-y-3 relative z-10">
-                  <li className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest border-b border-white/10 pb-2">
-                     <span>Facade_Elevations_Rev03.pdf</span>
-                     <span className="text-metallic-gold hover:text-[var(--creamy-white)] transition-colors cursor-pointer">Download</span>
+      </section>
+
+      {/* 3. PIPELINE (Chat-to-Build) */}
+      <section className="py-24 bg-black/20 border-y border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="mb-12 text-center">
+            <span className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase block mb-2">The E-Factory Process</span>
+            <h2 className="text-3xl md:text-4xl font-black uppercase">From Concept to Reality</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+            {/* Connector Line */}
+            <div className="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent z-0"></div>
+
+            {[
+              { icon: FileText, title: "Input", desc: "Upload PDFs & CADs" },
+              { icon: Cpu, title: "AI Analysis", desc: "Digital Quantity Takeoff" },
+              { icon: Layers, title: "Engineering", desc: "Shop Drawings & BIM" },
+              { icon: Factory, title: "Fabrication", desc: "CNC Precision Cutting" }
+            ].map((step, idx) => (
+              <div key={idx} className="relative z-10 flex flex-col items-center text-center group">
+                <div className="w-24 h-24 bg-brand-charcoal border border-white/10 rounded-full flex items-center justify-center mb-6 group-hover:border-brand-gold/50 transition-colors shadow-xl">
+                  <step.icon className="w-8 h-8 text-brand-gold" />
+                </div>
+                <h3 className="text-lg font-bold uppercase mb-2">{step.title}</h3>
+                <p className="text-sm text-white/50">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. BENTO GRID (Visual Texture Showcase) */}
+      <section className="py-24 bg-brand-charcoal">
+        <div className="container mx-auto px-6">
+           <div className="mb-12 flex justify-between items-end">
+            <div>
+              <span className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase block mb-2">Material Library</span>
+              <h2 className="text-3xl md:text-4xl font-black uppercase">The Stone Collection</h2>
+            </div>
+            <Link href="/library" className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-brand-gold transition-colors">
+              View All <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 h-[800px] md:h-[600px]">
+            {/* Large Feature */}
+            <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-sm">
+               <Image 
+                 src="/assets/images/texture_creamy_honed.jpg" 
+                 alt="Cream Riyadh Limestone" 
+                 fill 
+                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                 <h3 className="text-2xl font-bold uppercase text-white mb-1">Riyadh Cream</h3>
+                 <p className="text-brand-gold text-sm uppercase tracking-widest">Honed Finish • Indoor/Outdoor</p>
+               </div>
+            </div>
+
+            {/* Side Item 1 */}
+            <div className="relative group overflow-hidden rounded-sm">
+               <Image 
+                 src="/assets/images/texture_golden_hammered.jpg" 
+                 alt="Golden Hammered Stone" 
+                 fill 
+                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+               />
+               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+               <div className="absolute bottom-0 left-0 p-6">
+                 <h3 className="text-lg font-bold uppercase text-white mb-1">Desert Gold</h3>
+                 <p className="text-brand-gold text-xs uppercase tracking-widest">Bush Hammered</p>
+               </div>
+            </div>
+
+            {/* Side Item 2 - Text Only */}
+            <div className="bg-brand-mud/30 border border-white/5 p-8 flex flex-col justify-center rounded-sm">
+               <h3 className="text-xl font-bold uppercase mb-4 text-white">Custom Formats</h3>
+               <p className="text-sm text-white/60 mb-6 leading-relaxed">
+                 From massive unprocessed blocks to intricate waterjet mosaics. We source directly from the quarry to your site.
+               </p>
+               <div className="flex gap-2">
+                 <span className="bg-white/5 text-[10px] px-2 py-1 uppercase tracking-wider rounded">Slabs</span>
+                 <span className="bg-white/5 text-[10px] px-2 py-1 uppercase tracking-wider rounded">Tiles</span>
+                 <span className="bg-white/5 text-[10px] px-2 py-1 uppercase tracking-wider rounded">Cut-to-Size</span>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. PRODUCT FAMILIES */}
+      <section className="py-24 bg-black/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+             <h2 className="text-3xl md:text-4xl font-black uppercase mb-4">Engineering Families</h2>
+             <p className="text-white/60 max-w-2xl mx-auto">Seven specialized divisions to cover every architectural need.</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+             {["RiyadEx™", "RiyadFloor™", "RiyadWall™", "RiyadScape™", "RiyadMosque™", "RiyadVillas™", "RiyadTech™"].map((name, i) => (
+                <div key={i} className="bg-white/5 p-6 text-center border border-transparent hover:border-brand-gold/30 hover:bg-white/10 transition-all cursor-pointer group rounded-sm">
+                   <div className="w-10 h-10 mx-auto bg-brand-gold/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-gold text-brand-gold group-hover:text-brand-charcoal transition-colors">
+                      <span className="font-bold text-xs">{i + 1}</span>
+                   </div>
+                   <h4 className="text-xs font-bold uppercase tracking-wider">{name}</h4>
+                </div>
+             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ART & TECHNOLOGY */}
+      <section className="py-24 bg-brand-charcoal overflow-hidden">
+         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+            <div className="md:w-1/2">
+              <span className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase block mb-2">Technology</span>
+              <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 leading-tight">
+                Precision Beyond <br/> Human Limits
+              </h2>
+              <p className="text-white/70 mb-8 text-lg font-light leading-relaxed">
+                Utilizing drone photogrammetry and LiDAR scanning to ensure 0mm tolerance in installation. We simulate the reality before we cut the stone.
+              </p>
+              <ul className="space-y-4 mb-8">
+                {["Drone Site Surveys", "3D Point Cloud Processing", "Digital Dry-Lay"].map(item => (
+                  <li key={item} className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-brand-gold" />
+                    <span className="text-sm font-bold uppercase tracking-wider">{item}</span>
                   </li>
-                  <li className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest border-b border-white/10 pb-2">
-                     <span>Method_Statement_Install.pdf</span>
-                     <span className="text-metallic-gold hover:text-[var(--creamy-white)] transition-colors cursor-pointer">Download</span>
-                  </li>
-               </ul>
+                ))}
+              </ul>
+              <button className="text-brand-gold border-b border-brand-gold pb-1 text-xs font-bold uppercase tracking-widest hover:text-white hover:border-white transition-colors">
+                 Explore Tech Stack
+              </button>
             </div>
             
-            <div className="glass-panel p-8 relative overflow-hidden">
-               <div className="absolute inset-0 bg-noise opacity-5 pointer-events-none"></div>
-               <span className="material-symbols-outlined text-4xl text-metallic-gold mb-6 relative z-10">image</span>
-               <h3 className="text-xl font-black uppercase mb-2 relative z-10">Factory Snaps</h3>
-               <p className="text-xs opacity-60 mb-6 relative z-10">Daily photos from the production line for quality assurance.</p>
-               <div className="grid grid-cols-2 gap-2 relative z-10">
-                  <div className="h-24 bg-white/5 rounded overflow-hidden">
-                     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuU-LV5jtW7I-2KukZT4EkvlGrf7WWswDbvykyQa5cEr1ldR66X1i7WFhg35cDyQNMpUN8PQvFiTEhXicOpJ5vwXksCBB41K0qy7kIGNTYpfotr1g8ScBUSzZyV1eiz7KiEZKuX5q9FbzTshjtJVMpycRQSYW3Ynrn3cnDEqQ9MyNZwygmcec0fl5EeaQnCx0oaNVOxJtAxpzKJ4y2FH3zcTiGYxCJqiU5ZWboIy6Lz21rYnj327dyHFnBEDss5vnDq4uKhc0lIV1p" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Factory Snap 1"/>
-                  </div>
-                  <div className="h-24 bg-white/5 rounded overflow-hidden">
-                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJraqMlpkj2zxJHt01hS9_nJZ-M_2AK99yE-3dNIVmXHjyz87IVEAcUz-H_-v7PWtdA7Xl7qRNLavU2BpgDHiQm8SHgYL_Qf9uzwzt4QCfpgriZ507eVHYYZDHczJHH35kIGcAEjJz-KdAJIamopbuKo9cU5k_Zo7BvXtIAnROqbxKFVyZPSDYsQi9qQbekxIT6vADd5q1-Ba9iXVgz37wYDks2OolQ4R8LPiJ51o50YgFDjnLKqYsKIHe551AiK1OWNnbXokpG_ig" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Factory Snap 2"/>
+            <div className="md:w-1/2 relative h-[400px] w-full border border-white/10 bg-black/50 overflow-hidden group">
+               <div className="absolute inset-0 flex items-center justify-center">
+                 <div className="w-[80%] h-[80%] border border-brand-gold/30 rounded-full animate-[spin_10s_linear_infinite] opacity-50"></div>
+                 <div className="w-[60%] h-[60%] border border-dashed border-white/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+               </div>
+               <div className="absolute inset-0 flex items-center justify-center">
+                  <Zap className="w-16 h-16 text-brand-gold opacity-80" />
+               </div>
+               <div className="absolute bottom-4 right-4 font-mono text-xs text-brand-gold">
+                  SYSTEM_STATUS: ONLINE<br/>
+                  LIDAR_SCAN: ACTIVE
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* 7. FACTORY CAPABILITIES */}
+      <section className="py-24 bg-brand-mud/20">
+         <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden rounded-lg shadow-2xl">
+               <div className="relative h-[400px]">
+                  <Image 
+                    src="/assets/images/factory_slab.jpg" 
+                    alt="Riyadh Stone Factory" 
+                    fill 
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-brand-gold/10 mix-blend-overlay"></div>
+               </div>
+               <div className="bg-brand-charcoal p-12 flex flex-col justify-center">
+                  <h3 className="text-2xl font-black uppercase mb-4 text-brand-gold">The E-Factory</h3>
+                  <p className="text-white/70 mb-8 leading-relaxed">
+                     Located in the heart of Riyadh's industrial city, our facility is equipped with 5-axis CNC machines and automated waterjets capable of processing 10,000 SQM monthly.
+                  </p>
+                  <div className="grid grid-cols-3 gap-6">
+                     <div>
+                        <span className="block text-3xl font-bold text-white mb-1">10k</span>
+                        <span className="text-[10px] uppercase tracking-wider text-white/50">SQM/Month</span>
+                     </div>
+                     <div>
+                        <span className="block text-3xl font-bold text-white mb-1">5</span>
+                        <span className="text-[10px] uppercase tracking-wider text-white/50">Axis CNC</span>
+                     </div>
+                     <div>
+                        <span className="block text-3xl font-bold text-white mb-1">24/7</span>
+                        <span className="text-[10px] uppercase tracking-wider text-white/50">Operation</span>
+                     </div>
                   </div>
                </div>
             </div>
+         </div>
+      </section>
+
+      {/* 8. PROJECT SHOWCASE */}
+      <section id="portfolio" className="py-24 bg-brand-charcoal">
+         <div className="container mx-auto px-6">
+            <div className="mb-16">
+               <span className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase block mb-2">Selected Works</span>
+               <h2 className="text-3xl md:text-4xl font-black uppercase">Defining The Skyline</h2>
+            </div>
             
-            <div className="glass-panel p-8 bg-[var(--primary-brown)] text-white relative overflow-hidden">
-               <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
-               <span className="material-symbols-outlined text-4xl text-metallic-gold mb-6 relative z-10">support_agent</span>
-               <h3 className="text-xl font-black uppercase mb-2 relative z-10">Project Manager</h3>
-               <p className="text-xs opacity-60 mb-8 relative z-10">Direct line to your dedicated engineering lead.</p>
-               
-               <div className="flex items-center gap-4 mb-6 relative z-10">
-                  <div className="w-12 h-12 rounded-full bg-white/10"></div>
+            <div className="space-y-24">
+               {/* Project 1 */}
+               <div className="flex flex-col md:flex-row gap-8 items-center">
+                  <div className="md:w-3/5 h-[400px] relative w-full rounded-sm overflow-hidden shadow-2xl">
+                     <Image 
+                        src="/assets/images/retail_facade_night.jpg" 
+                        alt="Retail Project Facade" 
+                        fill 
+                        className="object-cover hover:scale-105 transition-transform duration-1000"
+                     />
+                  </div>
+                  <div className="md:w-2/5 md:pl-8">
+                     <span className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase">Retail Excellence</span>
+                     <h3 className="text-2xl font-bold uppercase my-3">Luxury Plaza 2024</h3>
+                     <p className="text-white/60 mb-6 leading-relaxed">
+                        A landmark retail destination featuring complex curved facades and backlit Onyx installations. Delivered on a 6-month fast-track schedule.
+                     </p>
+                     <div className="flex gap-4 mb-6">
+                        <div className="bg-white/5 px-3 py-1 text-[10px] uppercase tracking-wider">Honed Limestone</div>
+                        <div className="bg-white/5 px-3 py-1 text-[10px] uppercase tracking-wider">Steel Fixation</div>
+                     </div>
+                     <Link href="#" className="inline-flex items-center text-xs font-bold uppercase tracking-widest hover:text-brand-gold transition-colors">
+                        View Case Study <ArrowRight className="w-3 h-3 ml-2" />
+                     </Link>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* 9. QUALITY ASSURANCE */}
+      <section className="py-24 bg-white/[0.02]">
+         <div className="container mx-auto px-6 text-center">
+            <ShieldCheck className="w-12 h-12 text-brand-gold mx-auto mb-6" />
+            <h2 className="text-3xl font-black uppercase mb-6">ISO 9001 Certified</h2>
+            <p className="max-w-3xl mx-auto text-white/60 mb-12">
+               Our Quality Management System ensures strict adherence to ASTM and SASO standards. Every slab is inspected, tagged, and tracked.
+            </p>
+         </div>
+      </section>
+
+      {/* 10. HSE */}
+      <section className="py-12 bg-brand-green/20 border-y border-white/5">
+         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+             <div className="flex items-center gap-4">
+                <HardHat className="w-10 h-10 text-brand-gold" />
+                <div>
+                   <h3 className="font-bold uppercase text-lg">Safety First</h3>
+                   <p className="text-xs text-white/60">Zero Lost Time Injuries (LTI) in 2025</p>
+                </div>
+             </div>
+             <div className="h-8 w-[1px] bg-white/10 hidden md:block"></div>
+             <div>
+                <p className="text-sm font-mono text-center md:text-left text-brand-gold/80">
+                   SUSTAINABILITY COMMITMENT: <span className="text-white">100% Water Recycling in Factory</span>
+                </p>
+             </div>
+         </div>
+      </section>
+
+       {/* 11. TECHNICAL LIBRARY */}
+      <section className="py-24 bg-brand-charcoal">
+         <div className="container mx-auto px-6">
+            <div className="bg-gradient-to-r from-brand-mud to-brand-charcoal border border-white/10 p-12 rounded-lg relative overflow-hidden">
+               <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
                   <div>
-                     <p className="font-bold text-sm">Eng. Sarah Al-Faisal</p>
-                     <p className="text-[10px] opacity-60 uppercase tracking-widest">Senior Stone Specialist</p>
+                     <h3 className="text-2xl font-black uppercase mb-2">Technical Vault</h3>
+                     <p className="text-white/70">Access data sheets, installation guides, and CAD details.</p>
+                  </div>
+                  <div className="flex gap-4">
+                     <button className="bg-white/10 hover:bg-white/20 px-6 py-3 flex items-center gap-3 rounded transition-colors">
+                        <FileText className="w-5 h-5" />
+                        <span className="text-xs font-bold uppercase tracking-wider">Method Statements</span>
+                     </button>
+                     <button className="bg-white/10 hover:bg-white/20 px-6 py-3 flex items-center gap-3 rounded transition-colors">
+                        <Download className="w-5 h-5" />
+                        <span className="text-xs font-bold uppercase tracking-wider">Catalog 2026</span>
+                     </button>
                   </div>
                </div>
-               
-               <button className="w-full bg-metallic-gold text-[var(--deep-brown)] py-3 text-[10px] font-black uppercase tracking-widest hover:brightness-110 transition-all relative z-10 shadow-lg shadow-[#D4B56C]/20">
-                  Start Live Chat
+            </div>
+         </div>
+      </section>
+
+      {/* 12. DASHBOARD TEASER */}
+      <section className="py-24">
+         <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto text-center border border-dashed border-white/20 p-12 rounded-lg bg-black/40">
+               <Activity className="w-12 h-12 text-brand-gold mx-auto mb-6 animate-pulse" />
+               <h2 className="text-2xl font-bold uppercase mb-4">Client Portal Access</h2>
+               <p className="text-white/60 mb-8">
+                  Existing client? Log in to track your fabrication status, view live drone feeds, and download transmittals.
+               </p>
+               <button className="bg-brand-gold text-brand-charcoal px-8 py-3 font-bold uppercase tracking-widest hover:bg-white transition-colors">
+                  Login to Dashboard
                </button>
             </div>
-        </div>
-      </main>
-    </>
+         </div>
+      </section>
+
+      {/* 13. PARTNERS */}
+      <section className="py-16 bg-white/[0.02]">
+         <div className="container mx-auto px-6 text-center">
+            <span className="text-xs font-bold uppercase tracking-widest text-white/30 mb-8 block">Trusted By Industry Leaders</span>
+            <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+               {/* Placeholders for logos */}
+               <div className="h-8 w-32 bg-white/20 rounded"></div>
+               <div className="h-8 w-32 bg-white/20 rounded"></div>
+               <div className="h-8 w-32 bg-white/20 rounded"></div>
+               <div className="h-8 w-32 bg-white/20 rounded"></div>
+               <div className="h-8 w-32 bg-white/20 rounded"></div>
+            </div>
+         </div>
+      </section>
+
+      {/* 14. FAQ */}
+      <section className="py-24 bg-brand-charcoal">
+         <div className="container mx-auto px-6 max-w-3xl">
+            <h2 className="text-2xl font-black uppercase mb-12 text-center">Frequently Asked</h2>
+            <div className="space-y-4">
+               {[
+                  "What is the typical lead time for custom fabrication?",
+                  "Do you provide installation services?",
+                  "What is the maximum slab size for Riyadh Limestone?"
+               ].map((q, i) => (
+                  <div key={i} className="border-b border-white/10 pb-4">
+                     <div className="flex justify-between items-center cursor-pointer hover:text-brand-gold transition-colors">
+                        <span className="font-bold text-sm uppercase tracking-wide">{q}</span>
+                        <ChevronDown className="w-4 h-4" />
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </div>
+      </section>
+
+      {/* 15. CONTACT/CTA */}
+      <section id="contact" className="py-24 bg-brand-gold text-brand-charcoal">
+         <div className="container mx-auto px-6">
+            <div className="flex flex-col md:flex-row gap-16">
+               <div className="md:w-1/2">
+                  <h2 className="text-4xl md:text-5xl font-black uppercase mb-8">Ready to Build?</h2>
+                  <p className="text-xl font-medium mb-8">
+                     Consult with our engineering team today. Get a technical proposal within 48 hours.
+                  </p>
+                  <div className="flex items-center gap-4 mb-4">
+                     <div className="bg-brand-charcoal/10 p-3 rounded-full">
+                        <Phone className="w-6 h-6" />
+                     </div>
+                     <div>
+                        <span className="block text-xs font-bold uppercase tracking-widest opacity-60">Call Us</span>
+                        <span className="text-xl font-bold">+966 11 000 0000</span>
+                     </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                     <div className="bg-brand-charcoal/10 p-3 rounded-full">
+                        <Users className="w-6 h-6" />
+                     </div>
+                     <div>
+                        <span className="block text-xs font-bold uppercase tracking-widest opacity-60">Visit Us</span>
+                        <span className="text-xl font-bold">Riyadh Industrial City 2</span>
+                     </div>
+                  </div>
+               </div>
+               
+               <div className="md:w-1/2 bg-white p-8 md:p-12 rounded-sm shadow-2xl">
+                  <form className="space-y-6">
+                     <div className="grid grid-cols-2 gap-6">
+                        <div>
+                           <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-brand-charcoal/60">Name</label>
+                           <input type="text" className="w-full bg-gray-100 border-none p-4 rounded-sm focus:ring-2 focus:ring-brand-gold" />
+                        </div>
+                        <div>
+                           <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-brand-charcoal/60">Phone</label>
+                           <input type="text" className="w-full bg-gray-100 border-none p-4 rounded-sm focus:ring-2 focus:ring-brand-gold" />
+                        </div>
+                     </div>
+                     <div>
+                        <label className="block text-xs font-bold uppercase tracking-widest mb-2 text-brand-charcoal/60">Project Details</label>
+                        <textarea className="w-full bg-gray-100 border-none p-4 rounded-sm h-32 focus:ring-2 focus:ring-brand-gold"></textarea>
+                     </div>
+                     <button className="w-full bg-brand-charcoal text-white py-4 font-black uppercase tracking-widest hover:bg-brand-gold hover:text-brand-charcoal transition-colors">
+                        Submit RFQ
+                     </button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </section>
+
+    </div>
   );
 }
