@@ -1,0 +1,15 @@
+﻿{
+  "schema": "efactory.request.schema.v1",
+  "description": "Change Request schema for content/media/layout/token updates driven from client control panel.",
+  "fields": [
+    { "key": "id", "type": "string", "example": "RSQ-20260210-0001" },
+    { "key": "createdAt", "type": "string", "example": "2026-02-10T01:25:00+03:00" },
+    { "key": "createdBy", "type": "object", "example": { "actorType": "client", "actorId": "riyadhstone" } },
+    { "key": "target", "type": "object", "example": { "site": "RiyadhStone", "page": "Home", "section": "Hero", "editableId": "RS_WEB_HOME_HERO_TITLE" } },
+    { "key": "requestType", "type": "string", "enum": ["copy", "media", "layout", "token"] },
+    { "key": "payload", "type": "object", "example": { "newText": "Engineering Legacy", "mediaKey": "RS_WEB_HOME_HERO_IMG_desktop_v01" } },
+    { "key": "status", "type": "string", "enum": ["new", "triage", "in_progress", "review", "approved", "done", "rejected"] },
+    { "key": "priority", "type": "string", "enum": ["low", "normal", "high", "urgent"] },
+    { "key": "notes", "type": "string", "example": "Client requested smaller logo in hero." }
+  ]
+}
