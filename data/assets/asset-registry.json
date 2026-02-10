@@ -1,0 +1,75 @@
+{
+  "pages": {
+    "home": {
+      "sections": {
+        "hero": {
+          "assets": [
+            {
+              "id": "hero_bg_desktop",
+              "role": "background",
+              "variant": "desktop",
+              "version": "v001",
+              "path": "/assets/images/hero_tower.jpg",
+              "status": "placeholder",
+              "notes": "Current existing asset"
+            }
+          ]
+        },
+        "systems": {
+           "assets": [
+             {
+              "id": "facade_system_img",
+              "role": "card_image",
+              "variant": "desktop",
+              "version": "v001",
+              "path": "/assets/images/retail_facade_night.jpg",
+              "status": "placeholder",
+              "notes": "Current existing asset"
+             }
+           ]
+        },
+        "finishes": {
+            "assets": [
+                {
+                    "id": "texture_honed",
+                    "role": "texture",
+                    "variant": "desktop",
+                    "version": "v001",
+                    "path": "/assets/images/texture_creamy_honed.jpg",
+                    "status": "placeholder",
+                    "notes": "Current existing asset"
+                },
+                {
+                    "id": "texture_hammered",
+                    "role": "texture",
+                    "variant": "desktop",
+                    "version": "v001",
+                    "path": "/assets/images/texture_golden_hammered.jpg",
+                    "status": "placeholder",
+                    "notes": "Current existing asset"
+                }
+            ]
+        },
+        "tracker": {
+             "assets": [
+                 {
+                     "id": "factory_slab_img",
+                     "role": "card_image",
+                     "variant": "desktop",
+                     "version": "v001",
+                     "path": "/assets/images/factory_slab.jpg",
+                     "status": "placeholder",
+                     "notes": "Current existing asset"
+                 }
+             ]
+        }
+      }
+    },
+    "products": { "sections": {} },
+    "systems": { "sections": {} },
+    "engineering": { "sections": {} },
+    "library": { "sections": {} },
+    "contact": { "sections": {} },
+    "efactory": { "sections": {} }
+  }
+}
