@@ -1,5 +1,24 @@
-{
-  "schema": "editables.registry.v1",
-  "rules_ref": "docs/00_governance/02_editable_ids.md",
-  "items": []
+﻿{
+  "schema": "efactory.editables.registry.v1",
+  "notes": "Defines editable targets. UI will reference editableId. Do not change Home visuals during خطة التأسيس.",
+  "items": [
+    {
+      "editableId": "RS_WEB_HOME_HERO_TITLE",
+      "site": "RiyadhStone",
+      "page": "Home",
+      "section": "Hero",
+      "kind": "copy",
+      "label": "Hero Title",
+      "defaultValue": "ENGINEERING LEGACY"
+    },
+    {
+      "editableId": "RS_WEB_HOME_HERO_IMAGE",
+      "site": "RiyadhStone",
+      "page": "Home",
+      "section": "Hero",
+      "kind": "media",
+      "label": "Hero Image",
+      "defaultMediaKey": "RS_WEB_HOME_HERO_IMG_desktop_v01"
+    }
+  ]
 }

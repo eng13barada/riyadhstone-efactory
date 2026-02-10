@@ -1,18 +1,18 @@
-{
-  "schema": "media.registry.v1",
-  "rules_ref": "docs/00_governance/01_media_naming_and_versioning.md",
+﻿{
+  "schema": "efactory.media.registry.v1",
+  "notes": "Media registry is source of truth. Do not apply to Home during خطة التأسيس. Store only.",
   "items": [
     {
-      "id": "RSW.HOME.HERO.BG.D.v001",
-      "status": "in-use",
-      "current_path": "public/assets/images/hero_tower.jpg",
-      "canonical_name_planned": "RSW_HOME__HERO__BG__D__v001.jpg",
-      "variant": "D",
-      "page": "HOME",
-      "section": "HERO",
-      "role": "BG",
-      "version": 1,
-      "notes": "Do not rename now. Home is locked."
+      "mediaKey": "RS_WEB_HOME_HERO_IMG_desktop_v01",
+      "site": "RiyadhStone",
+      "page": "Home",
+      "section": "Hero",
+      "role": "image",
+      "variant": "desktop",
+      "version": "v01",
+      "status": "active",
+      "path": "/assets/images/hero_tower.jpg",
+      "alt": "RiyadhStone hero image placeholder"
     }
   ]
 }
