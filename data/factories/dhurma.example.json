@@ -1,0 +1,87 @@
+{
+  "id": "factory_001",
+  "tenantId": "tenant_001",
+  "name": "Dhurma Factory Example",
+  "type": "Processing & Fabrication",
+  "location": {
+    "city": "Dhurma",
+    "industrialCity": "Dhurma Industrial City",
+    "googleMapsUrl": "https://maps.google.com/?q=24.123,46.123"
+  },
+  "licenses": {
+    "operating": {
+      "number": "OP-2023-8842",
+      "expiry": "2026-05-20",
+      "status": "Active"
+    },
+    "industrial": {
+      "number": "IND-9921",
+      "expiry": "2025-11-15",
+      "status": "Active"
+    },
+    "environmental": {
+      "number": "ENV-7732",
+      "expiry": "2024-12-30",
+      "status": "Warning"
+    },
+    "civilDefense": {
+      "number": "CD-1122",
+      "expiry": "2026-02-28",
+      "status": "Expiring Soon"
+    }
+  },
+  "lease": {
+    "contractNumber": "MODON-5521",
+    "startDate": "2020-01-01",
+    "endDate": "2030-01-01",
+    "areaSqm": 15000
+  },
+  "workforce": {
+    "total": 142,
+    "admin": 12,
+    "technicians": 45,
+    "labor": 85
+  },
+  "equipment": [
+    {
+      "id": "eq_001",
+      "name": "5-Axis CNC Saw",
+      "brand": "Donatoni",
+      "model": "Jet 625",
+      "status": "Operational",
+      "nextService": "2026-03-15"
+    },
+    {
+      "id": "eq_002",
+      "name": "Bridge Saw",
+      "brand": "GMM",
+      "model": "Extra 400",
+      "status": "Operational",
+      "nextService": "2026-04-01"
+    },
+    {
+      "id": "eq_003",
+      "name": "Forklift 5T",
+      "brand": "Caterpillar",
+      "model": "DP50",
+      "status": "Maintenance Required",
+      "nextService": "2026-02-15"
+    },
+    {
+      "id": "eq_004",
+      "name": "Water Filtration System",
+      "brand": "Matec",
+      "model": "Filter Press 800",
+      "status": "Operational",
+      "nextService": "2026-06-01"
+    },
+    {
+      "id": "eq_005",
+      "name": "Backup Generator",
+      "brand": "Perkins",
+      "model": "400kVA",
+      "status": "Standby",
+      "nextService": "2026-05-10"
+    }
+  ]
+}

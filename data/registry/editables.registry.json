@@ -1,4 +1,4 @@
-﻿{
+{
   "schema": "efactory.editables.registry.v1",
   "notes": "Defines editable targets. UI will reference editableId. Do not change Home visuals during خطة التأسيس.",
   "items": [

@@ -1,0 +1,22 @@
+{
+  "id": "tenant_001",
+  "legalName": "Riyadh Stone Company",
+  "crNumber": "1010234567",
+  "unifiedNumber": "920001234",
+  "vatNumber": "300123456700003",
+  "address": {
+    "city": "Riyadh",
+    "district": "Industrial City 2",
+    "street": "Unit 45"
+  },
+  "contact": {
+    "name": "Admin User",
+    "email": "admin@riyadhstone.com",
+    "phone": "+966500000000"
+  },
+  "subscription": {
+    "plan": "Enterprise",
+    "status": "Active",
+    "validUntil": "2027-01-01"
+  }
+}

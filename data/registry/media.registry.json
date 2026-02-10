@@ -1,4 +1,4 @@
-﻿{
+{
   "schema": "efactory.media.registry.v1",
   "notes": "Media registry is source of truth. Do not apply to Home during خطة التأسيس. Store only.",
   "items": [
