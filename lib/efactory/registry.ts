@@ -1,21 +1,28 @@
 ﻿import { readJson } from "./storage";
 import type { MediaRegistry, EditablesRegistry } from "@/types/efactory/registry";
 
-const MEDIA_PATH = "data/registry/media.registry.json";
-const EDITABLES_PATH = "data/registry/editables.registry.json";
+const REGISTRY_COLLECTION = "registry";
+const MEDIA_NAME = "media.registry";
+const EDITABLES_NAME = "editables.registry";
+
+const DEFAULT_MEDIA: MediaRegistry = {
+  schema: "efactory.media.registry.v1",
+  notes: "",
+  items: [],
+};
+
+const DEFAULT_EDITABLES: EditablesRegistry = {
+  schema: "efactory.editables.registry.v1",
+  notes: "",
+  items: [],
+};
 
 export async function getMediaRegistry(): Promise<MediaRegistry> {
-  return readJson<MediaRegistry>(MEDIA_PATH, {
-    schema: "efactory.media.registry.v1",
-    notes: "",
-    items: []
-  });
+  const data = await readJson<MediaRegistry>(REGISTRY_COLLECTION, MEDIA_NAME);
+  return data ?? DEFAULT_MEDIA;
 }
 
 export async function getEditablesRegistry(): Promise<EditablesRegistry> {
-  return readJson<EditablesRegistry>(EDITABLES_PATH, {
-    schema: "efactory.editables.registry.v1",
-    notes: "",
-    items: []
-  });
+  const data = await readJson<EditablesRegistry>(REGISTRY_COLLECTION, EDITABLES_NAME);
+  return data ?? DEFAULT_EDITABLES;
 }

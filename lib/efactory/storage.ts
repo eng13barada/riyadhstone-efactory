@@ -1,19 +1,48 @@
-﻿import { promises as fs } from "fs";
-import path from "path";
+﻿import fs from 'fs';
+import path from 'path';
 
-export async function readJson<T>(relativePath: string, fallback: T): Promise<T> {
-  const p = path.join(process.cwd(), relativePath);
-  try {
-    const raw = await fs.readFile(p, "utf8");
-    return JSON.parse(raw) as T;
-  } catch {
-    return fallback;
-  }
+const DATA_DIR = path.join(process.cwd(), 'data');
+
+export async function readJSON<T>(collection: string, name: string): Promise<T | null> {
+    try {
+        const filePath = path.join(DATA_DIR, collection, `${name}.json`);
+        if (!fs.existsSync(filePath)) return null;
+        
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        return JSON.parse(fileContent) as T;
+    } catch (error) {
+        console.error(`Error reading ${collection}/${name}`, error);
+        return null;
+    }
 }
 
-export async function writeJson<T>(relativePath: string, data: T): Promise<void> {
-  const p = path.join(process.cwd(), relativePath);
-  const dir = path.dirname(p);
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(p, JSON.stringify(data, null, 2), "utf8");
+export async function writeJSON<T>(collection: string, name: string, data: T): Promise<boolean> {
+    try {
+        const dirPath = path.join(DATA_DIR, collection);
+        if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true });
+        }
+        
+        const filePath = path.join(dirPath, `${name}.json`);
+        fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+        return true;
+    } catch (error) {
+        console.error(`Error writing ${collection}/${name}`, error);
+        return false;
+    }
 }
+
+export async function listCollection(collection: string): Promise<string[]> {
+    try {
+         const dirPath = path.join(DATA_DIR, collection);
+         if (!fs.existsSync(dirPath)) return [];
+         
+         const files = fs.readdirSync(dirPath);
+         return files.filter(f => f.endsWith('.json')).map(f => f.replace('.json', ''));
+    } catch (error) {
+         console.error(`Error listing ${collection}`, error);
+         return [];
+    }
+}
+export { readJSON as readJson };
+export { writeJSON as writeJson };
