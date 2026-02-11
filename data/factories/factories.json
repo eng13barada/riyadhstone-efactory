@@ -1,0 +1,31 @@
+﻿{
+  "schema": "efactory.factories.v1",
+  "items": [
+    {
+      "id": "dharma-demo",
+      "tenantId": "riyadhstone",
+      "displayName": "Dharma Factory (Demo Benchmark)",
+      "status": "demo",
+      "location": { "country": "SA", "city": "Riyadh", "area": "Dharma" },
+      "profile": {
+        "benchmark": true,
+        "purpose": "Minimum viable factory model to validate E-Factory workflows",
+        "notes": "Uses 'Dharma factory example' data as baseline"
+      },
+      "createdAt": "2026-02-10"
+    },
+    {
+      "id": "riyadhstone-planned",
+      "tenantId": "riyadhstone",
+      "displayName": "RiyadhStone® (Planned Factory)",
+      "status": "planned",
+      "location": { "country": "SA", "city": "TBD", "area": "TBD" },
+      "profile": {
+        "benchmark": false,
+        "purpose": "Future real factory profile (to be updated later)",
+        "notes": "Keep placeholder until lease/purchase is finalized"
+      },
+      "createdAt": "2026-02-10"
+    }
+  ]
+}

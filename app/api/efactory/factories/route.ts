@@ -9,19 +9,11 @@ type FactoriesFile = { schema: string; items: Factory[] };
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const tenant = (searchParams.get("tenant") ?? "").trim();
-  const factory = (searchParams.get("factory") ?? "").trim();
 
   const file = await readJson<FactoriesFile>("factories", "factories");
   const items = file?.items ?? [];
 
-  const tenantFactories = tenant ? items.filter(f => f.tenantId === tenant) : items;
+  const filtered = tenant ? items.filter(f => f.tenantId === tenant) : items;
 
-  // default: first factory under tenant if not specified
-  const selected =
-    (factory ? tenantFactories.find(f => f.id === factory) : tenantFactories[0]) ?? null;
-
-  return NextResponse.json({
-    ok: true,
-    data: selected ? { ...selected, profile: selected.profile ?? {} } : null
-  });
+  return NextResponse.json({ ok: true, data: filtered });
 }

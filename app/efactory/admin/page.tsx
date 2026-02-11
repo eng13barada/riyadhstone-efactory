@@ -1,97 +1,109 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useEffect, useState } from "react";
 
-export default function AdminConsole() {
-  const [tenants, setTenants] = useState<any[]>([]);
-  const [factory, setFactory] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+type Tenant = { id: string; displayName: string; notes?: string };
+type Factory = { id: string; tenantId: string; displayName: string; status: string; location?: any; profile?: any };
+
+export default function AdminPage() {
+  const [tenants, setTenants] = useState<Tenant[]>([]);
+  const [factories, setFactories] = useState<Factory[]>([]);
+  const [tenantId, setTenantId] = useState<string>("riyadhstone");
+  const [factoryId, setFactoryId] = useState<string>("");
+  const [profile, setProfile] = useState<any>(null);
+  const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const [tenantsRes, factoryRes] = await Promise.all([
-            fetch('/api/efactory/tenants'),
-            fetch('/api/efactory/factory-profile?id=dhurma.example')
-        ]);
-        
-        if (tenantsRes.ok) setTenants(await tenantsRes.json());
-        if (factoryRes.ok) setFactory(await factoryRes.json());
-      } catch (error) {
-        console.error("Failed to load dashboard data", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
+    (async () => {
+      setErr(null);
+      const r = await fetch("/api/efactory/tenants", { cache: "no-store" });
+      const j = await r.json();
+      if (!j?.ok) throw new Error("Failed to load tenants");
+      setTenants(j.data ?? []);
+    })().catch(e => setErr(String(e?.message ?? e)));
   }, []);
 
-  if (loading) return <div className="p-8 text-white">Loading E-Factory Core...</div>;
+  useEffect(() => {
+    (async () => {
+      setErr(null);
+      const r = await fetch(`/api/efactory/factories?tenant=${encodeURIComponent(tenantId)}`, { cache: "no-store" });
+      const j = await r.json();
+      if (!j?.ok) throw new Error("Failed to load factories");
+      const list = (j.data ?? []) as Factory[];
+      setFactories(list);
+
+      // auto-select first factory if not selected
+      if (!factoryId && list.length) setFactoryId(list[0].id);
+      if (factoryId && !list.some(f => f.id === factoryId) && list.length) setFactoryId(list[0].id);
+      if (!list.length) setFactoryId("");
+    })().catch(e => setErr(String(e?.message ?? e)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tenantId]);
+
+  useEffect(() => {
+    if (!tenantId) return;
+    (async () => {
+      setErr(null);
+      const qs = new URLSearchParams({ tenant: tenantId });
+      if (factoryId) qs.set("factory", factoryId);
+
+      const r = await fetch(`/api/efactory/factory-profile?${qs.toString()}`, { cache: "no-store" });
+      const j = await r.json();
+      if (!j?.ok) throw new Error("Failed to load factory profile");
+      setProfile(j.data);
+    })().catch(e => setErr(String(e?.message ?? e)));
+  }, [tenantId, factoryId]);
 
   return (
-    <div className="min-h-screen bg-[#1a1918] text-white p-8 font-sans">
-      <header className="mb-12 border-b border-white/10 pb-6 flex justify-between items-center">
-        <div>
-            <h1 className="text-3xl font-bold text-[#C5A572]">E-Factory Admin</h1>
-            <p className="text-white/40 text-sm mt-1">Version 0.1.0 (MVP)</p>
+    <div className="p-6 space-y-4">
+      <div>
+        <h1 className="text-2xl font-semibold">E-Factory Admin (MVP Preview)</h1>
+        <p className="text-sm opacity-70">Tenant  Multiple Factories  Profile Preview</p>
+      </div>
+
+      {err ? (
+        <div className="rounded-md border p-3 text-sm text-red-600">
+          {err}
         </div>
-        <div className="flex gap-4">
-             <Link href="/efactory/admin/factory" className="px-4 py-2 border border-white/20 rounded hover:bg-white/5 text-sm">Factory Profile</Link>
-             <Link href="/efactory/admin/maintenance" className="px-4 py-2 border border-white/20 rounded hover:bg-white/5 text-sm">Maintenance</Link>
-        </div>
-      </header>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Tenant Card */}
-        <div className="bg-white/5 p-6 rounded border border-white/10">
-          <h2 className="text-xl font-bold mb-4 text-[#F3EAD3]">Tenant Profile</h2>
-          {tenants.map(t => (
-            <div key={t.id} className="space-y-2">
-                <div className="text-2xl font-bold">{t.legalName}</div>
-                <div className="text-sm text-white/60">CR: {t.crNumber}</div>
-                <div className="text-sm text-white/60">Plan: <span className="text-green-400">{t.subscription.plan}</span></div>
-            </div>
-          ))}
+      ) : null}
+
+      <div className="grid gap-3 md:grid-cols-2">
+        <div className="rounded-lg border p-4 space-y-2">
+          <div className="text-sm font-medium">Tenant</div>
+          <select
+            className="w-full rounded-md border px-3 py-2"
+            value={tenantId}
+            onChange={(e) => setTenantId(e.target.value)}
+          >
+            {tenants.map(t => (
+              <option key={t.id} value={t.id}>{t.displayName} ({t.id})</option>
+            ))}
+          </select>
         </div>
 
-        {/* Factory Status */}
-        <div className="bg-white/5 p-6 rounded border border-white/10">
-          <h2 className="text-xl font-bold mb-4 text-[#F3EAD3]">Seed Factory Status</h2>
-          {factory && (
-             <div className="space-y-4">
-                 <div>
-                     <div className="text-lg font-bold">{factory.name}</div>
-                     <div className="text-xs text-white/40">{factory.location.industrialCity}</div>
-                 </div>
-                 
-                 <div className="grid grid-cols-2 gap-2 text-xs">
-                     <div className={`p-2 rounded border ${new Date(factory.licenses.operating.expiry) > new Date() ? 'border-green-500/30 bg-green-500/10' : 'border-red-500/30 bg-red-500/10'}`}>
-                         <div className="opacity-60">Operating Lic</div>
-                         <div className="font-mono">{factory.licenses.operating.expiry}</div>
-                     </div>
-                     <div className={`p-2 rounded border ${new Date(factory.licenses.civilDefense.expiry) > new Date() ? 'border-green-500/30 bg-green-500/10' : 'border-red-500/30 bg-red-500/10'}`}>
-                         <div className="opacity-60">Civil Defense</div>
-                         <div className="font-mono">{factory.licenses.civilDefense.expiry}</div>
-                     </div>
-                 </div>
-             </div>
-          )}
+        <div className="rounded-lg border p-4 space-y-2">
+          <div className="text-sm font-medium">Factory</div>
+          <select
+            className="w-full rounded-md border px-3 py-2"
+            value={factoryId}
+            onChange={(e) => setFactoryId(e.target.value)}
+          >
+            {factories.map(f => (
+              <option key={f.id} value={f.id}>{f.displayName}  {f.status}</option>
+            ))}
+          </select>
         </div>
+      </div>
 
-        {/* Quick Actions */}
-        <div className="bg-white/5 p-6 rounded border border-white/10 flex flex-col gap-3">
-          <h2 className="text-xl font-bold mb-4 text-[#F3EAD3]">Quick Actions</h2>
-          <button className="w-full text-left px-4 py-3 bg-white/5 hover:bg-brand-gold/20 hover:text-brand-gold transition-colors rounded text-sm">
-             + New Quote Request (RFQ)
-          </button>
-          <button className="w-full text-left px-4 py-3 bg-white/5 hover:bg-brand-gold/20 hover:text-brand-gold transition-colors rounded text-sm">
-             + Add Machinery Ticket
-          </button>
-          <button className="w-full text-left px-4 py-3 bg-white/5 hover:bg-brand-gold/20 hover:text-brand-gold transition-colors rounded text-sm">
-             Configure Shift Schedule
-          </button>
-        </div>
+      <div className="rounded-lg border p-4">
+        <div className="text-sm font-medium mb-2">Selected Factory Profile (JSON)</div>
+        <pre className="text-xs overflow-auto whitespace-pre-wrap">
+{JSON.stringify(profile, null, 2)}
+        </pre>
+      </div>
+
+      <div className="text-xs opacity-70">
+        Endpoints: /api/efactory/tenants  /api/efactory/factories?tenant=...  /api/efactory/factory-profile?tenant=...&factory=...
       </div>
     </div>
   );

@@ -1,0 +1,8 @@
+﻿{
+  "schema": "efactory.factoryProfile.v1",
+  "tenant": "riyadhstone",
+  "factory": "dharma-demo",
+  "brandName": "RiyadhStone",
+  "displayName": "Dharma Demo Factory",
+  "notes": "Baseline demo profile. Will be replaced later with real factory data."
+}

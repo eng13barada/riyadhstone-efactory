@@ -1,0 +1,18 @@
+﻿{
+  "schema": "efactory.factories.v1",
+  "tenant": "riyadhstone",
+  "items": [
+    {
+      "id": "dharma-demo",
+      "name": "Dharma Demo (Al-Jazirah Factory)",
+      "status": "demo",
+      "location": "Dharma - Saudi Arabia"
+    },
+    {
+      "id": "riyadhstone-factory-01",
+      "name": "RiyadhStone Factory 01 (Planned)",
+      "status": "planned",
+      "location": "TBD"
+    }
+  ]
+}

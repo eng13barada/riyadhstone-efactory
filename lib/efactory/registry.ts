@@ -1,5 +1,5 @@
-﻿import { readJson } from "./storage";
-import type { MediaRegistry, EditablesRegistry } from "@/types/efactory/registry";
+﻿import type { MediaRegistry, EditablesRegistry } from "@/types/efactory/registry";
+import { readJson } from "./storage";
 
 const REGISTRY_COLLECTION = "registry";
 const MEDIA_NAME = "media.registry";
